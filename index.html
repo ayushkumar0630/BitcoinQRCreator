@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/specifc.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/qrcode.min.js"></script>
 	<script type="text/javascript" src="js/qr-bitcoin-generator.js"></script>	
@@ -32,42 +33,31 @@
 
 	     <section class="jumbotron text-center">
 	       <div class="container">
-	         <h1 class="jumbotron-heading">Album example</h1>
-	         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-	         <p>
-	           <a href="#" class="btn btn-primary my-2">Main call to action</a>
-	           <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-	         </p>
+		       <h1 class="jumbotron-heading"> Generate QR Codes With No Fear</h1>
+	         <p class="lead text-muted">We don't store and sell your cookie to third parties. Use this generator to stay anonymous while using bitcoin.</p>
 
-	         	<div class="form-group">
+		<div class="row">
+		  <div class="col-md-7 col-centered">
+	         	<div id="qrcode" style="margin-top:15px;"></div>
+		  </div>
+		  <div class="col-md-5">
+			<div class="form-group">
 	         	  <label for="">Bitcoin Recieving Address</label>
 	         	  <input type="text" class="form-control" id="bitcoin-addr">
 	         	</div>
-	             <div class="input-group">
-	               <label for="transferamount">Transfer Amount</label>
-	               <div class="input-group-addon">$</div>
+	             <div class="form-group">
+	               <label for="transferamount">Transfer Amount (BTC)</label>
 	               <input type="text" class="form-control" id="transfer-amount" placeholder="Amount">
-	               <div class="input-group-addon">.00</div>
 	             </div>
+			<button onclick="generateQRCode()" class="btn btn-default">Submit</button>
 	           </div>
-	           <button onclick="generateQRCode()" class="btn btn-default">Submit</button>
-
-	         <div id="qrcode" style="margin-top:15px;"></div>
+		  
+		  </div>
 	       </div>
 	     </section>
+		</div>
 
 	   </main>
-
-	   <footer class="text-muted">
-	     <div class="container">
-	       <p class="float-right">
-	         <a href="#">Back to top</a>
-	       </p>
-	       <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-	       <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-	     </div>
-	   </footer>
-	
 	
 	<script type="text/javascript">
 		function generateQRCode(){
