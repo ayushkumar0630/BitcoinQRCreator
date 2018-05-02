@@ -39,6 +39,7 @@
 		<div class="row">
 		  <div class="col-md-7 col-centered">
 	         	<div id="qrcode" style="display:inline-block;"></div>
+	         	<div id="qrcode-link" style="text-align: center"></div>
 		  </div>
 		  <div class="col-md-5">
 			<div class="form-group">
@@ -69,6 +70,7 @@
 				amount : $('#transfer-amount').val()
 			});
 
+			$('#qrcode-link').text($('#qrcode').attr('title'));
 		}
 	</script>
 
