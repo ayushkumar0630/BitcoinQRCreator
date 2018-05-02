@@ -4,8 +4,8 @@ function createQRCode(htmlElement, parameters){
 
 	var paymentQRcode = '';
 	var qrcode = null;
-	var width = 100;
-	var height = 100;
+	var width = 200;
+	var height = 200;
 
 	if(parameters["address"] !== undefined){
 		if(parameters["amount"] !== ""){
@@ -25,10 +25,6 @@ function createQRCode(htmlElement, parameters){
 			width : width,
 			height : height
 		});
-	}
-	else 
-	{
-
 	}
 
 	return qrcode;
