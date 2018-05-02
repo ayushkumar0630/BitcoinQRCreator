@@ -6,6 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/qrcode.min.js"></script>
+	<script type="text/javascript" src="js/qr-bitcoin-generator.js"></script>	
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -25,21 +28,56 @@
 	    </div>
 	</nav>
 
+	   <main role="main">
+
+	     <section class="jumbotron text-center">
+	       <div class="container">
+	         <h1 class="jumbotron-heading">Album example</h1>
+	         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+	         <p>
+	           <a href="#" class="btn btn-primary my-2">Main call to action</a>
+	           <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+	         </p>
+
+	         	<div class="form-group">
+	         	  <label for="">Bitcoin Recieving Address</label>
+	         	  <input type="text" class="form-control" id="bitcoin-addr">
+	         	</div>
+	             <div class="input-group">
+	               <label for="transferamount">Transfer Amount</label>
+	               <div class="input-group-addon">$</div>
+	               <input type="text" class="form-control" id="transfer-amount" placeholder="Amount">
+	               <div class="input-group-addon">.00</div>
+	             </div>
+	           </div>
+	           <button onclick="generateQRCode()" class="btn btn-default">Submit</button>
+
+	         <div id="qrcode" style="margin-top:15px;"></div>
+	       </div>
+	     </section>
+
+	   </main>
+
+	   <footer class="text-muted">
+	     <div class="container">
+	       <p class="float-right">
+	         <a href="#">Back to top</a>
+	       </p>
+	       <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+	       <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+	     </div>
+	   </footer>
 	
-	<form>
-		<div class="form-group">
-		  <label for="">Bitcoin Recieving Address</label>
-		  <input type="text" class="form-control" id="bitcoinaddr">
-		</div>
-	    <div class="input-group">
-	      <label for="transferamount">Transfer Amount</label>
-	      <div class="input-group-addon">$</div>
-	      <input type="text" class="form-control" id="transferamount" placeholder="Amount">
-	      <div class="input-group-addon">.00</div>
-	    </div>
-	  </div>
-	  <button type="submit" class="btn btn-default">Submit</button>
-	</form>
+	
+	<script type="text/javascript">
+		function generateQRCode(){
+
+			$("#qrcode").empty();
+
+			createQRCode(document.getElementById("qrcode"), $('#bitcoin-addr').val(), $('#transfer-amount').val(), 100, 100 );
+
+		}
+	</script>
 
 </body>
 </html>
