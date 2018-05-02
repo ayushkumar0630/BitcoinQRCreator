@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="specific.css" rel="stylesheet">
+	<link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/qrcode.min.js"></script>
 	<script type="text/javascript" src="js/qr-bitcoin-generator.js"></script>	
@@ -40,6 +41,13 @@
 		  <div class="col-md-7 col-centered">
 	         	<div id="qrcode" style="display:inline-block;"></div>
 	         	<div id="qrcode-link" style="text-align: center"></div>
+	         	<div class="download-button">
+	         		<a href="" id="download-qr" download="bitcoin-qr-code.png" style="display: none;" >
+		         		<button type="button" class="btn btn-default" aria-label="Left Align">
+		         		  <span class="oi oi-cloud-download" style="font-size: 30px"></span>
+		         		</button>
+	         		</a>
+	         	</div>
 		  </div>
 		  <div class="col-md-5">
 			<div class="form-group">
@@ -71,6 +79,14 @@
 			});
 
 			$('#qrcode-link').text($('#qrcode').attr('title'));
+
+			setTimeout(
+			  function() 
+			  {
+			    $("#download-qr").attr("href", $('#qrcode').children('img').attr("src"));
+				$("#download-qr").show();
+			  }, 200);
+
 		}
 	</script>
 
