@@ -35,7 +35,12 @@ function generateQRCode(){
 
 	$("#qrcode").empty();
 
-	createQRCode(document.getElementById("qrcode"), $('#QRbitcoinAdresss').val(), $('#QRprice').val(), 100, 100 );
+	createQRCode(document.getElementById("qrcode"),{
+			address: $('#QRbitcoinAdresss').val(),
+			amount : $('#QRprice').val(),
+			height : 100,
+			width : 100
+		});
 
 	// qrcode1.clear();
 	// qrcode1.makeCode($('#QRbitcoinAdresss').val());

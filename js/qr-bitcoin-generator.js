@@ -1,15 +1,35 @@
-function createQRCode(htmlElement, bitcoinAddress, amount, QRwidth, QRheight){
+function createQRCode(htmlElement, parameters){
 
-	var paymentQRcode = 'bitcoin:' + bitcoinAddress + '?amount=' + amount;
+	console.log(parameters);
 
+	var paymentQRcode = '';
+	var qrcode = null;
+	var width = 100;
+	var height = 100;
 
-	var qrcode = new QRCode(htmlElement, {
-		text: paymentQRcode,
-		width : QRwidth,
-		height : QRheight
-	});
+	if(parameters["address"] !== undefined){
+		if(parameters["amount"] !== ""){
+			paymentQRcode = 'bitcoin:' + parameters["address"] + '?amount=' + parameters["amount"];
+		}else{
+			paymentQRcode = 'bitcoin:' + parameters["address"];
+		}
 
-	qrcode.makeCode();
+		if( parameters["width"] !== undefined && parameters["height"] !== undefined ){
+			alert("test");
+			width = parameters["width"];
+			height = parameters["height"];
+		}
+
+		qrcode = new QRCode(htmlElement, {
+			text: paymentQRcode,
+			width : width,
+			height : height
+		});
+	}
+	else 
+	{
+
+	}
 
 	return qrcode;
 

@@ -74,7 +74,10 @@
 
 			$("#qrcode").empty();
 
-			createQRCode(document.getElementById("qrcode"), $('#bitcoin-addr').val(), $('#transfer-amount').val(), 100, 100 );
+			createQRCode(document.getElementById("qrcode"),{
+				address: $('#bitcoin-addr').val(),
+				amount : $('#transfer-amount').val()
+			});
 
 		}
 	</script>
