@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%; width: 100%;">
 <head>
 	<title>Bitcoin QR Creator</title>
 	<meta charset="utf-8">
@@ -15,7 +15,7 @@
 
 
 </head>
-<body>
+<body style="height: 100%; width: 100%;">
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 	    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
 		<ul class="navbar-nav mr-auto">
@@ -26,12 +26,14 @@
 	    </div>
 	</nav>
 
-	   <main role="main">
+		<div class="container">
+		  <div class="page-header text-center" style="margin-top: 50px; margin-bottom:50px;">
+		    <h1 class="jumbotron-heading"> Generate QR Codes With No Fear</h1>
+	         <p class="lead text-muted">We don't store and sell your cookie to third parties. Use this generator to stay anonymous while using bitcoin.</p>    
+		  </div>  
+		</div>
 
-	     <section class="jumbotron text-center">
-	       <div class="container">
-		       <h1 class="jumbotron-heading"> Generate QR Codes With No Fear</h1>
-	         <p class="lead text-muted">We don't store and sell your cookie to third parties. Use this generator to stay anonymous while using bitcoin.</p>
+	   <main role="main" class="jumbotron" style="margin-bottom: 0px;">
 
 		<div class="row">
 		  <div class="col-md-7 col-centered">
@@ -87,7 +89,10 @@
 		   }
 
 		$('#transfer-amount').change(function(){
-			if(validDecimal($('#transfer-amount').val())){
+			if($('#transfer-amount').val() == ""){
+				 $('#transfer-amount').removeClass('is-invalid');
+				 $('#transfer-amount').removeClass('is-valid');
+			}else if(validDecimal($('#transfer-amount').val())){
 			    $('#transfer-amount').removeClass('is-invalid');
 				$('#transfer-amount').addClass('is-valid');
 			}   
@@ -101,7 +106,10 @@
 
 		$('#bitcoin-addr').change(function(){
 			var valid = WAValidator.validate($('#bitcoin-addr').val(), 'bitcoin');
-			if(valid){
+			if($('#bitcoin-addr').val() == ""){
+				$('#bitcoin-addr').removeClass('is-invalid');
+				$('#bitcoin-addr').removeClass('is-valid');
+			}else if(valid){
 			    $('#bitcoin-addr').removeClass('is-invalid');
 				$('#bitcoin-addr').addClass('is-valid');
 			}   
