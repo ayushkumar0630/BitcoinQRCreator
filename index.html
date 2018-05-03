@@ -10,7 +10,11 @@
 	<link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/qrcode.min.js"></script>
-	<script type="text/javascript" src="js/qr-bitcoin-generator.js"></script>	
+	<script type="text/javascript" src="js/qr-bitcoin-generator.js"></script>
+	<script src="js/wallet-address-validator.min.js"></script>
+	<script type="text/javascript" src="js/form-checks.js"></script>
+
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -43,16 +47,30 @@
 	         	</div>
 		  </div>
 		  <div class="col-md-5">
-			<div class="form-group">
+			<div class="form-group" novalidate>
 	         	  <label for="">Bitcoin Recieving Address</label>
 	         	  <input type="text" class="form-control" id="bitcoin-addr">
+	         	  <div class="invalid-feedback">
+			        The bitcoin address is not valid
+			      </div>
+			      <div class="valid-feedback">
+			        The bitcoin address is valid
+			      </div>
+
 	         	</div>
 	             <div class="form-group">
 	               <label for="transferamount">Transfer Amount (BTC)</label>
 	               <input type="text" class="form-control" id="transfer-amount" placeholder="Amount">
+                  <div class="invalid-feedback">
+       		        The bitcoin address is not valid
+       		      </div>
+       		      <div class="valid-feedback">
+       		        The bitcoin address is valid
+       		      </div>
 	             </div>
 			<button onclick="generateQRCode()" class="btn btn-default">Submit</button>
 	           </div>
+	           <div id="text"></div>
 		  
 		  </div>
 	       </div>
@@ -62,6 +80,20 @@
 	   </main>
 	
 	<script type="text/javascript">
+
+		$('#bitcoin-addr').change(function(){
+			var valid = WAValidator.validate($('#bitcoin-addr').val(), 'bitcoin');
+			if(valid){
+			    $('#bitcoin-addr').removeClass('is-invalid');
+				$('#bitcoin-addr').addClass('is-valid');
+			}   
+			else{
+			    $('#bitcoin-addr').addClass('is-invalid');
+				$('#bitcoin-addr').removeClass('is-valid');
+			}
+			    
+		});
+
 		function generateQRCode(){
 
 			$("#qrcode").empty();
