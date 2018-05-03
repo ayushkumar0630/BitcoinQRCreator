@@ -12,7 +12,6 @@
 	<script type="text/javascript" src="js/qrcode.min.js"></script>
 	<script type="text/javascript" src="js/qr-bitcoin-generator.js"></script>
 	<script src="js/wallet-address-validator.min.js"></script>
-	<script type="text/javascript" src="js/form-checks.js"></script>
 
 
 </head>
@@ -62,10 +61,10 @@
 	               <label for="transferamount">Transfer Amount (BTC)</label>
 	               <input type="text" class="form-control" id="transfer-amount" placeholder="Amount">
                   <div class="invalid-feedback">
-       		        The bitcoin address is not valid
+       		        The amount of bitcoin is not valid
        		      </div>
        		      <div class="valid-feedback">
-       		        The bitcoin address is valid
+       		        The amount of bitcoin is valid
        		      </div>
 	             </div>
 			<button onclick="generateQRCode()" class="btn btn-default">Submit</button>
@@ -80,6 +79,25 @@
 	   </main>
 	
 	<script type="text/javascript">
+
+		function validDecimal(txt)
+		   {  
+		        return txt.match(/^\d*(.\d*)?$/);
+		   
+		   }
+
+		$('#transfer-amount').change(function(){
+			if(validDecimal($('#transfer-amount').val())){
+			    $('#transfer-amount').removeClass('is-invalid');
+				$('#transfer-amount').addClass('is-valid');
+			}   
+			else{
+			    $('#transfer-amount').addClass('is-invalid');
+				$('#transfer-amount').removeClass('is-valid');
+			}
+			    
+		});
+
 
 		$('#bitcoin-addr').change(function(){
 			var valid = WAValidator.validate($('#bitcoin-addr').val(), 'bitcoin');
